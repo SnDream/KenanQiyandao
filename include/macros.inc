@@ -1,22 +1,22 @@
 IF !DEF(MACROS_INC)
 DEF MACROS_INC EQU 1
 
-cleartill: macro
+MACRO cleartill
 	rept \1 - @
 		nop
 	endr
 endm
 
-lb: macro ; r, hi, lo
+MACRO lb ; r, hi, lo
 	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
 endm
 
-dbw: macro
+MACRO dbw
 	db \1
 	dw \2
 endm
 
-dba: macro
+MACRO dba
 	db BANK(\1)
 	dw \1
 endm

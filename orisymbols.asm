@@ -1,4 +1,4 @@
-org: macro
+MACRO org
 	if \1 < $4000
 		section "org_\1", rom0[\1]
 	elif \1 < $8000
@@ -48,6 +48,9 @@ oSwitchBank::
 	org $090c
 ; hl = [ hl + a * 2 ]
 oGetHLJumpTable::
+	org $091c
+; a = [ hl + a ] , at bank b
+oGetHLIndexTableFar::
 	org $0932
 ; a = [ hl + a ]
 oGetHLIndexTable::
@@ -101,7 +104,14 @@ oCharCtrlFD::
 	org $160c
 oCharCtrlFF::
 
-	
+	org $2516
+oPlaceString::
+
+	org $76d1, $02
+oChapterTextPointer::
+	org $78b3, $02
+oCharterText::
+
 ; VRAM
 	org $9c00
 ovTextBoxStart::

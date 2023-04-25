@@ -1,7 +1,7 @@
 IF !DEF(W_CHARMAP_INC)
 DEF W_CHARMAP_INC EQU 1
 
-w_init: macro
+MACRO w_init
 def W_PLANE_MAX = \1
 newcharmap w_length
 for i, 0, \1
@@ -10,7 +10,7 @@ endr
 setcharmap w_plane_0
 endm
 
-w_charmap: macro
+MACRO w_charmap
 if _NARG >= 2 && _NARG < W_PLANE_MAX + 2
 	setcharmap w_length
 	charmap \1, _NARG - 1
@@ -29,7 +29,7 @@ else
 endc
 endm
 
-w_text: macro
+MACRO w_text
 rept _NARG
 	setcharmap w_length
 	for i, 1, charlen(\1) + 1

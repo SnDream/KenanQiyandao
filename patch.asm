@@ -98,7 +98,7 @@ endr
 if \3 == 1
 	pop hl
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 x = 0
 rept \2
 x = x + 1
@@ -112,7 +112,7 @@ if x < \2
 endc
 endr
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	ret 
 endc
 
