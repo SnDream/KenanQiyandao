@@ -2,28 +2,28 @@ IF !DEF(MACROS_INC)
 DEF MACROS_INC EQU 1
 
 MACRO cleartill
-	rept \1 - @
+	REPT \1 - @
 		nop
-	endr
-endm
+	ENDR
+ENDM
 
 MACRO lb ; r, hi, lo
 	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
-endm
+ENDM
 
 MACRO dbw
 	db \1
 	dw \2
-endm
+ENDM
 
 MACRO dba
 	db BANK(\1)
 	dw \1
-endm
+ENDM
 
-text equs "w_text"
-line equs "w_text \"[换行FF]\", "
-para_end equs "w_text \"[换段F9]\""
-text_end equs ""
+DEF text EQUS "w_text"
+DEF line EQUS "w_text \"[换行FF]\", "
+DEF para_end EQUS "w_text \"[换段F9]\""
+DEF text_end EQUS ""
 
 ENDC ; MACROS_INC

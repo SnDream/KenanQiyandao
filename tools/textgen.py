@@ -90,7 +90,7 @@ def insert_text_asm(asmstr, datalen, dataaddr):
 	global chardatalen
 	global charbank
 	global text_asm
-	if (chardatalen + datalen) > 0x4000:
+	if (chardatalen + datalen) > 0x3e00:
 		charbank += 1
 		chardatalen = 0
 		text_asm.append("section \"text %04X\", romx[$%04x], bank[$%x]\n"%(charbank, 0x4000, charbank))
@@ -117,7 +117,7 @@ def charmap_gen(str):
 			ctrl_str += c
 			if c == ']':
 				ctrl = 0
-				count += len(ctrl_str)
+				count += len(chartbl[ctrl_str])
 				continue
 		else:
 			if c == '[':
@@ -263,7 +263,7 @@ for line_raw in text:
 			continue
 
 for key in chartbl:
-	charmap_asm.append("\t w_charmap \"%s\""%key)
+	charmap_asm.append("\tw_charmap \"%s\""%key)
 	for i in chartbl[key]:
 		charmap_asm.append(", $%02x"%i)
 	charmap_asm.append("\n")

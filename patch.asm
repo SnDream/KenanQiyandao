@@ -69,7 +69,7 @@ TextboxClearPatch:
 
 section "Extra Home Program", rom0[$33c0]
 
-display_tile_builder: macro ; t l v
+MACRO display_tile_builder ; t l v
 	ld [hli], a
 	ld a, [hli]
 	ld e, a
@@ -82,9 +82,9 @@ endc
 	ld h, d
 	ld l, e
 	ld de, $0020 - \1 + 1
-x = 0
+DEF x = 0
 rept \2
-x = x + 1
+DEF x = x + 1
 if \1 == 2
 	ld [hli], a
 	inc a
@@ -99,9 +99,9 @@ if \3 == 1
 	pop hl
 	ld a, 1
 	ldh [rVBK], a
-x = 0
+DEF x = 0
 rept \2
-x = x + 1
+DEF x = x + 1
 if \1 == 2
 	set OAMB_BANK1, [hl]
 	inc hl
