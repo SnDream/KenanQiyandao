@@ -21,9 +21,9 @@ MACRO dba
 	dw \1
 ENDM
 
-DEF text EQUS "w_text"
-DEF line EQUS "w_text \"[换行FF]\", "
-DEF para_end EQUS "w_text \"[换段F9]\""
+DEF text EQUS "db_w"
+DEF line EQUS "db_w \"[换行FF]\", "
+DEF para_end EQUS "db_w \"[换段F9]\""
 DEF text_end EQUS ""
 
 ENDC ; MACROS_INC

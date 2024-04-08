@@ -54,9 +54,9 @@ text_asm = [
 ]
 
 charmap_asm = [
-	"include \"include/w_charmap.inc\"\n",
+	"include \"include/charmap_w.inc\"\n",
 	"\n",
-	"\tw_init 3\n",
+	"\tnewcharmap_w 3\n",
 	"\n",
 ]
 
@@ -263,7 +263,7 @@ for line_raw in text:
 			continue
 
 for key in chartbl:
-	charmap_asm.append("\tw_charmap \"%s\""%key)
+	charmap_asm.append("\tcharmap_w \"%s\""%key)
 	for i in chartbl[key]:
 		charmap_asm.append(", $%02x"%i)
 	charmap_asm.append("\n")
